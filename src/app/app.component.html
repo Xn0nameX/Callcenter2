@@ -1,0 +1,130 @@
+<body>
+  <table>
+    <tr>
+      <th>
+        <div class="cell-content">
+          <p>Проекты</p>
+          <select [(ngModel)]="selectedScenario" id="projectSelected">
+            <option value="Все">Все</option>
+            <option *ngFor="let scenario of scenarios" [value]="scenario.id">{{ scenario.name }}</option>
+          </select>
+        </div>
+      </th>
+      <th>
+        <div class="cell-content">
+          <p>Результаты</p>
+          <select [(ngModel)]="selectedCallResults" id="tagResults">
+            <option value="Все">Все</option>
+            <option *ngFor="let callResult of callResults" [value]="callResult.call_result_id">{{ callResult.name }}</option>
+          </select>
+        </div>
+      </th>
+      <th>
+        <div class="cell-content">
+          <p>Пользователи</p>
+          <select [(ngModel)]="selectedEmployee" id="userSelected">
+            <option value="Все">Все</option>
+            <option *ngFor="let employee of employees" [value]="employee.employee_id">{{ employee.family }}</option>
+          </select>
+        </div>
+      </th>
+      <th>
+        <div class="cell-content">
+          <p>Теги</p>
+          <select [(ngModel)]="selectedTag" id="tagSelectFirst">
+            <option value="Всё">Всё</option>
+            <option *ngFor="let tag of tags" [value]="tag.tag_id">{{ tag.nameTag }}</option>
+          </select>
+        </div>
+      </th>
+      <th class="smallcel">
+        <div>
+          <button class="button" (click)="calculateCounts()">Обновить информацию</button>
+        </div>
+      </th>
+    </tr>
+  </table>
+  
+
+
+    <p style="margin-left: 450px; font-size: 15px; margin-top: 50px;">Контактов прозвонено:</p>
+    <p style="margin-left: 450px; font-size: 30px;">({{ contactedCountThe_Bell_Rang }}) </p>
+
+    
+
+  
+
+<table>
+  <tr>
+    <th>
+      <div class="cell-content_for_row">
+        <p>Дата</p>
+        <div class="input-container_for_row">
+          <input type="date" id="startDate" name="startDate">
+          <a>&ensp; </a>
+          <a class="defis">- </a>
+          <a>&ensp;</a>
+          <input type="date" size="15" id="endDate" name="endDate">
+        </div>
+      </div>
+    </th>
+    <th>
+      <div class="cell-content">
+        <p>Проект</p>
+        <select id="prodjectGraphik">
+          <option value="Все">Все</option>
+          <option *ngFor="let scenario of scenarios" [value]="scenario.id">{{ scenario.name }}</option>
+        </select>
+      </div>
+    </th>
+    <th>
+      <div class="cell-content">
+        <p>Теги</p>
+        <select [(ngModel)]="selectedTag" id="tagSelectSecond">
+          <option value="Всё">Всё</option>
+          <option *ngFor="let tag of tags" [value]="tag.tag_id">{{ tag.nameTag }}</option>
+        </select>
+      </div>
+      <th>
+        <div class="cell-content">
+          <p>Пользователи</p>
+          <select [(ngModel)]="selectedEmployeee" id="userSelected2">
+            <option value="Все">Все</option>
+            <option *ngFor="let employee of employees" [value]="employee.employee_id">{{ employee.family }}</option>
+          </select>
+        </div>
+      </th>
+    <th class="smallcel">
+      <div>
+        <button class="button" (click)="createChart()">Обновить информацию</button>
+      </div>
+    </th>
+  </tr>
+</table>
+
+<div style="width: 1000px; height: 500px; display: flex; margin-left: 450px;margin-top: 100px;">
+  <div style="margin-right: 20px; ">
+    <span style="font-size: 18px; font-weight: bold;">Всего загружено:</span>
+    <p style="font-size: 20px;" id="totalupload"></p>
+    <span style="font-size: 18px; font-weight: bold;">Дозвонились:</span>
+    <p style="font-size: 20px;" id="totalgot"></p>
+    <span style="font-size: 18px; font-weight: bold;">Передано:</span>
+    <p style="font-size: 20px;" id="totaltransferred"></p>
+    
+  </div>
+  <canvas id="MyPie"></canvas>
+</div>
+
+<div style="width: 1000px;height: 500px; margin-left: 450px; margin-top: 50px; margin-bottom: 50px; border-color: black;">
+  <canvas id="MyChart"></canvas>
+</div>
+
+
+
+
+</body>
+
+
+<router-outlet></router-outlet>
+
+<app-reporting></app-reporting>

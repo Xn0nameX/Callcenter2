@@ -1,0 +1,25 @@
+
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compact-table th,
+.compact-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.compact-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.compact-table td {
+  font-size: 14px;
+}
+
+.compact-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

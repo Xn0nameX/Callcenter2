@@ -1,0 +1,49 @@
+
+<input type="file" (change)="onFileSelected($event)">
+
+<button (click)="uploadReport()">Upload Report</button>
+
+<button (click)="fetchReportData()">Получить отчет</button>
+<select id="clientSelect" [(ngModel)]="selectedClientId">
+  <option value="">Все клиенты</option>
+  <option *ngFor="let client of clients" [value]="client.client_id">{{ client.name_and_family }}</option>
+</select>
+
+
+<table class="compact-table" *ngIf="reportData">
+  <thead>
+  <tr>
+    <!-- Заголовки таблицы -->
+    <th>Дата звонка</th>
+    <th>Время звонка</th>
+    <th>Продолжительность</th>
+    <th>Комментарий</th>
+    <th>ID звонка</th>
+    <th>Тип звонка</th>
+    <th>Результат звонка</th>
+    <th>Клиент</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of reportData">
+    <!-- Данные из CallLog модели -->
+    <td>{{ item.call_date }}</td>
+    <td>{{ item.call_time }}</td>
+    <td>{{ item.duration }}</td>
+    <td>{{ item.comment }}</td>
+    <td>{{ item.idzapisi }}</td>
+    <!-- Данные из связанных таблиц -->
+    <td>{{ item.callType?.name }}</td>
+    <td>{{ item.callResult?.name }}</td>
+    <td>{{ item.client?.name_and_family }}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<table class="compact-table" *ngIf="reportData">
+  <!-- ... -->
+  <tr *ngFor="let item of reportData">
+    <!-- ... -->
+  </tr>
+</table>
